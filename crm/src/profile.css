@@ -1,0 +1,33 @@
+.new_contain{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card1{
+  width: 450px;
+  height: 500px;
+  border-radius: 20px;
+  background:black;
+  display: flex;
+  justify-content: center;
+ 
+}
+.card2{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #fff;
+  margin: 20px 0px;
+}
+.gradient-custom {
+  /* fallback for old browsers */
+  background: #f6d365;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
+}

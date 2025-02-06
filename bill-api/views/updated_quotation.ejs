@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Invoice</title>
+    <style>
+        /* Global Styles */
+        *{
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding:0;
+           box-sizing: border-box;
+          
+        }
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .header,
+        .footer {
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            margin-top: 30px;
+        }
+
+        /* Company Information */
+        .company-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .company-info .left {
+            flex: 1;
+        }
+
+        .company-info h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .company-info p,
+        .client-info p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .company-info .contact {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+
+        .company-info .logo {
+            flex-shrink: 0;
+            padding-left: 20px;
+        }
+
+        .company-info .logo img {
+            max-height: 100px;
+            width: auto;
+        }
+
+        /* Header Content */
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-content h2 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .header-content h4 {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        /* Invoice Number and Date Section */
+        .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            background-color: #182f49;
+            color: white;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        .invoice-header p {
+            margin: 0;
+        }
+
+        /* Client Information */
+        
+
+        /* Bill Section */
+        .bill {
+            display: flex;
+            justify-content: space-between; /* Aligns the two sections horizontally */
+            gap: 20px; /* Adds space between the Bill To and Ship To sections */
+            /* Adds space below the Bill To and Ship To sections */
+        }
+
+        .bill .client-info {
+           
+            margin-right: 20px;
+            width: 45%;
+            float: left; /* Optional: Adds space between the sections */
+        }
+        .bill .client-infoo {
+            
+            margin-right: 20px;
+            width: 45%;
+            float: right; /* Optional: Adds space between the sections */
+        }
+
+
+        .client-info h4 {
+            margin-bottom: 10px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .client-info p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+        .client-infoo h4 {
+            margin-bottom: 10px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .client-infoo p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        /* Product Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 50px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            color: #182f49;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+            color: #182f49;
+        }
+
+        /* Total Section */
+        .total {
+            text-align: right;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 40px;
+        }
+
+        .totall {
+            margin-left: 200px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .totalll {
+            margin-left: 530px;
+            
+            font-weight: bold;
+        }
+
+        .total p {
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .company-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .company-info .logo {
+                padding-left: 0;
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            table,
+            th,
+            td {
+                font-size: 12px;
+            }
+
+            .bill {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+       
+        <!-- Company Information -->
+        <div class="company-info">
+            <div class="left">
+                <img src="https://crm.dreambytesolution.com/public/assets/img.png" alt="Company Logo" style="width:100%; height: auto;">
+            </div>
+           
+        </div>
+
+        <div style="margin:0 30px;">  
+        
+
+        <!-- Client Information -->
+        <div class="bill">
+          <h2 style="color: #182f49;">Client Information</h2>
+            <div class="client-info" >
+                
+                <h4 style="color: #182f49;">Bill To</h4>
+                <p style="color: #182f49;"><strong>Client Name:</strong> <%= billingRecord.client.name %></p>
+                <p style="color: #182f49;"><strong>Email:</strong> <%= billingRecord.client.email %></p>
+                <p style="color: #182f49;"><strong>Phone:</strong> <%= billingRecord.client.phone || 'N/A' %></p>
+                <p style="color: #182f49;"><strong>Address:</strong> <%= billingRecord.client.addressLine1 || 'N/A' %></p>
+                <p style="color: #182f49;"><strong>GST Number:</strong> <%= billingRecord.client. gstno || 'N/A' %></p>
+            </div>
+           
+        </div>
+
+        <!-- Product Table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>GST (%)</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% billingRecord.products.forEach(function (product) { %>
+                <tr>
+                    <td><%= product.productName %></td>
+                    <td>₹<%= product.price.toFixed(2) %></td>
+                    <td><%= product.quantity %></td>
+                    <td><%= product.gst %>%</td>
+                    <td>₹<%= product.total.toFixed(2) %></td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        <div style="border-top: 2px solid #182f49; border-bottom: 2px solid #182f49; margin-top: 20px;  ">
+          <p style="color: #182f49;"><span><strong>Subtotal</strong> </span>
+          <span class="totalll"><strong><%= billingRecord.totalAmount.toFixed(2) %></strong> </span></p>
+      </div>
+
+        <div class="bill">
+        <div class=" client-info">
+           
+        </div >
+        <div class="total client-infoo" >
+            
+            
+            <p style="color: #182f49;">Total Amount: ₹<%= billingRecord.totalAmount.toFixed(2) %></p>
+        </div>
+        </div>
+    </div>
+        <!-- <div>
+            <img src="https://crm.dreambytesolution.com/public/assets/footer.png" alt="" style="width: 100%; height: auto;">
+        </div> -->
+    </div>  
+        
+    </div>
+</body>
+
+</html>

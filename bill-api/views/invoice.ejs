@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoice</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        /* background-color: #f4f4f4; */
+      }
+      .container {
+        /* background-color: white; */
+        padding: 20px;
+        width: 100%;
+        margin: 0 auto;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      .header-content {
+        width: 60%;
+        /* background-color: red; */
+      }
+      .header-content h2 {
+        margin-bottom: 10px;
+      }
+      .header-content h4 {
+        margin: 5px 0;
+      }
+      .company-logo img {
+        height: 120px;
+        width: 180px;
+        object-fit: cover;
+        border-radius: 10px;
+        float: right;
+        /* background-image: url("./company-logo.png"); */
+        background-color: #000000;
+        margin-top: -90px;
+      }
+      .mobile-gst {
+        margin-bottom: 20px;
+      }
+      .mobile-gst .gst {
+        float: center;
+      }
+      .mobile-gst h4 {
+        margin: 5px 0;
+      }
+      hr {
+        margin: 20px 0;
+        border: none;
+        height: 2px;
+        background-color: #93c9e8;
+      }
+      .billing-names {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        margin-bottom: 20px;
+      }
+      .billing-names .bill-to {
+        width: 45%;
+        float: left;
+      }
+
+      .billing-names .ship-to {
+        width: 45%;
+        float: right;
+      }
+      .billing-names h2 {
+        margin-bottom: 10px;
+      }
+      .billing-names h4 {
+        margin: 5px 0;
+      }
+
+      .service {
+        margin-top: 50px !important;
+      }
+      .service table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+      .service th,
+      .service td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      .service th {
+        background-color: #f2f2f2;
+      }
+      .subtotal-table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+      }
+      .subtotal-table th,
+      .subtotal-table td {
+        /* border: 1px solid #ddd; */
+        padding: 8px;
+        text-align: left;
+      }
+      .subtotal-table th {
+        background-color: #f2f2f2;
+      }
+      .total-amount {
+        text-align: right;
+        margin-top: 20px;
+      }
+      .total-amount h3,
+      .total-amount h4 {
+        margin-bottom: 10px;
+      }
+      .authorized-signatory {
+        text-align: right;
+        margin-top: 40px;
+      }
+      .authorized-signatory img {
+        height: 50px;
+      }
+      .authorized-signatory h4 {
+        margin: 5px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="header-content">
+          <h1>BIll here</h1>
+          <h2>Dream Byte Solutions (OPC) Private Limited</h2>
+          <h4>
+            Near Siddhartha Group of Institutions, DandaKhudanewala,<br />
+            Sahastradhara Road, Dehradun city, 248001, Uttarakhand, India
+          </h4>
+        </div>
+        <div class="company-logo">
+          <img
+            src="https://dreambytesolution.com/images/logo-v1.png"
+            alt="Company Logo"
+          />
+        </div>
+      </div>
+      <div class="mobile-gst">
+        <h4>Mobile No: 7880966304</h4>
+        <h4 class="gst">GSTIN: abc18762137sjk</h4>
+        <p>Invoice Number: <%= invoiceNumber %></p>
+        <h4>Date: <%= date %></h4>
+      </div>
+      <hr />
+
+      <div class="billing-names" style="margin-bottom: 220px">
+        <div class="bill-to">
+          <h2>Bill To:</h2>
+          <h4><%= client.name %></h4>
+          <h4>
+            <%= client.addressLine1 %><br />
+            <%= client.City %>, <%= client.State %>, <%= client.pincode %>
+          </h4>
+          <h4>Email: <%= client.email %></h4>
+          <h4>GSTIN: <%= client.gstno %></h4>
+        </div>
+        <div class="ship-to">
+          <h2>Ship To:</h2>
+          <h4><%= client.name %></h4>
+          <h4>
+            <%= client.addressLine1 %><br />
+            <%= client.City %>, <%= client.State %>, <%= client.pincode %>
+          </h4>
+          <h4>Email: <%= client.email %></h4>
+          <h4>GSTIN: <%= client.gstno %></h4>
+        </div>
+      </div>
+
+      <div class="service" style="margin-top: 500px">
+        <table>
+          <thead>
+            <tr>
+              <th>SERVICES</th>
+              <th>RATE</th>
+              <% if (client.State === 'Uttarakhand') { %>
+              <th>SGST</th>
+              <th>CGST</th>
+              <% } else { %>
+              <th>GST</th>
+              <% } %>
+              <th>AMOUNT</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% services.forEach(service => { %>
+            <tr>
+              <td><%= service.name %></td>
+              <td><%= service.price %></td>
+              <% if (client.State === 'Uttarakhand') { %>
+              <td><%= (service.tax / 2).toFixed(2) %></td>
+              <td><%= (service.tax / 2).toFixed(2) %></td>
+              <% } else { %>
+              <td><%= service.tax.toFixed(2) %></td>
+              <% } %>
+              <td><%= service.price + service.tax %></td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+      <table class="subtotal-table">
+        <!-- <tr>
+          <th>DESCRIPTION</th>
+          <th>TOTAL RATE</th>
+          <% if (client.State === 'Uttarakhand') { %>
+          <th>TOTAL SGST</th>
+          <th>TOTAL CGST</th>
+          <% } else { %>
+          <th>TOTAL GST</th>
+          <% } %>
+          <th>TOTAL AMOUNT</th>
+        </tr> -->
+        <tr
+          style="
+            border-top: 4px solid #93c9e8;
+            border-bottom: 4px solid #93c9e8;
+            font-weight: bold;
+          "
+        >
+          <td>Subtotal</td>
+          <td><%= totalRate.toFixed(2) %></td>
+          <% if (client.State === 'Uttarakhand') { %>
+          <td><%= (totalTax / 2).toFixed(2) %> (SGST)</td>
+          <td><%= (totalTax / 2).toFixed(2) %> (CGST)</td>
+          <% } else { %>
+          <td><%= totalTax.toFixed(2) %> (GST)</td>
+          <% } %>
+          <td><%= totalAmount.toFixed(2) %></td>
+        </tr>
+        <% if (client.State === 'Uttarakhand') { %>
+        <tr>
+          <td colspan=""></td>
+          <td colspan=""></td>
+          <td>TAXABLE AMOUNT</td>
+          <td colspan="2"><%= totalRate.toFixed(2) %></td>
+        </tr>
+        <tr>
+          <td colspan=""></td>
+          <td colspan=""></td>
+          <td>SGST 9%</td>
+          <td colspan="2"><%= (totalTax / 2).toFixed(2) %></td>
+        </tr>
+        <tr>
+          <td colspan=""></td>
+          <td colspan=""></td>
+          <td>CGST 9%</td>
+          <td colspan="2"><%= (totalTax / 2).toFixed(2) %></td>
+        </tr>
+        <% } else { %>
+        <tr>
+          <td colspan=""></td>
+          <td colspan=""></td>
+          <td style="font-weight: bold">GST 18%</td>
+          <td colspan="2" style="font-weight: bold">
+            <%= totalTax.toFixed(2) %>
+          </td>
+        </tr>
+        <% } %>
+
+        <tr>
+          <td colspan=""></td>
+          <td colspan=""></td>
+          <td style="font-weight: bold">Total</td>
+          <td colspan="2" style="font-weight: bold">
+            <%= totalAmount.toFixed(2) %>
+          </td>
+        </tr>
+      </table>
+      <!-- <div class="total-amount">
+        <h3>Total:<h3> 
+          
+         <h3><%= totalAmount.toFixed(2) %></h3>
+      </div> -->
+      <div class="total-amount">
+        <h3>TOTAL AMOUNT (IN WORDS)</h3>
+        <h4><%= amountInWords %></h4>
+      </div>
+      <div class="authorized-signatory">
+        <img src="authorized-signatory.png" alt="Authorized Signatory" />
+        <h4>Authorized Signatory</h4>
+      </div>
+    </div>
+  </body>
+</html>

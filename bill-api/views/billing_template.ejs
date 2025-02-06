@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Invoice</title>
+    <style>
+        /* Global Styles */
+        * {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+            page-break-before: always;
+        }
+
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        /* Main container for content */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 10px;  
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding-bottom: 150px; /* Ensure space for footer */
+            position: relative;
+            z-index: 1; /* Ensure content is above footer image */
+        }
+
+        /* Footer Image */
+        .footer-image {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 2; 
+        }
+
+        /* Content Wrapper */
+        .content-wrapper {
+            min-height: 100%;
+            padding-bottom: 250px; 
+            position: relative;
+        }
+
+        /* Invoice Header */
+        .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            background-color: #182f49;
+            color: white;
+            padding: 10px;
+        }
+
+        /* Client Information */
+        .bill {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .bill .client-info {
+            margin-right: 20px;
+            width: 45%;
+            float: left;
+        }
+
+        .bill .client-infoo {
+            margin-right: 20px;
+            width: 45%;
+            float: right;
+        }
+
+        .client-info h4,
+        .client-infoo h4 {
+            margin-bottom: 10px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .client-info p,
+        .client-infoo p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        /* Product Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            color: #182f49;
+            font-size: 13px;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+
+        /* Total Section */
+        .total {
+            text-align: right;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 40px;
+        }
+
+        .totall {
+            margin-left: 200px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .totalll {
+            margin-left: 530px;
+            font-weight: bold;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            table,
+            th,
+            td {
+                font-size: 12px;
+            }
+
+            .bill {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content-wrapper">
+        <div class="company-info">
+            <div class="left">
+                <img src="https://crm.dreambytesolution.com/public/assets/img.png" alt="Company Logo" style="width:100%; height: auto;">
+            </div>
+        </div>
+
+        <div class="container">
+            <div style="margin:0 10px;">
+                <div class="invoice-header">
+                    <p><span><strong>Invoice No.</strong> <%= generateInvoice.invoiceNo %> </span>
+                        <span class="totall"><strong>Invoice Date:</strong> <%= generateInvoice.dateFormatted %></span></p>
+                </div>
+
+                <!-- Client Information -->
+                <div class="bill">
+                    <div class="client-info">
+                        <h4 style="color: #182f49; margin-top: 10px;">Bill To</h4>
+                        <p style="color: #182f49;"><strong>Client Name:</strong> <%= client.name %></p>
+                        <p style="color: #182f49;"><strong>Email:</strong> <%= client.email %></p>
+                        <p style="color: #182f49;"><strong>Phone:</strong> <%= client.phone || 'N/A' %></p>
+                        <p style="color: #182f49;"><strong>Address:</strong> <%= client.addressLine1 || 'N/A' %></p>
+                        <p style="color: #182f49;"><strong>GST Number:</strong> <%= client.gstno || 'N/A' %></p>
+                    </div>
+                    <div class="client-infoo">
+                        <h4 style="color: #182f49;  margin-top: 10px;">Ship To</h4>
+                        <p style="color: #182f49;"><strong>Client Name:</strong> <%= shipTo.shipToName %></p>
+                        <p style="color: #182f49;"><strong>Email:</strong> <%= shipTo.shipToEmail %></p>
+                        <p style="color: #182f49;"><strong>Phone:</strong> <%= shipTo.shipToPhone || 'N/A' %></p>
+                        <p style="color: #182f49;"><strong>Address:</strong> <%= shipTo.shipToaddressLine1 || 'N/A' %></p>
+                        <p style="color: #182f49;"><strong>GST Number:</strong> <%= shipTo.shipToGstno || 'N/A' %></p>
+                    </div>
+                </div>
+
+                <!-- Product Table -->
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>GST (%)</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% products.forEach(function (product) { %>
+                        <tr>
+                            <td><%= product.productName %></td>
+                            <td>₹<%= product.price.toFixed(2) %></td>
+                            <td><%= product.quantity %></td>
+                            <td><%= product.gst %>%</td>
+                            <td>₹<%= product.total.toFixed(2) %></td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+
+                <div style="border-top: 2px solid #182f49; border-bottom: 2px solid #182f49; margin-top: 20px;">
+                    <p style="color: #182f49;"><span><strong>Subtotal</strong> </span>
+                        <span class="totalll"><strong><%= totalAmount.toFixed(2) %></strong> </span></p>
+                </div>
+
+                <div class="bill">
+                    <div class="client-info">
+                        <img src="https://crm.dreambytesolution.com/public/assets/sign.png" alt="" style="width: 170px; height: auto;">
+                        <h5 style="margin-top: 0px; color: #182f49; margin-left: 30px;">AUTHORISED SIGNATORY FOR <br>
+                            <span style="font-size: 10px; margin-top: 0px;"> Dreambyte solutions (OPC) Pvt. Ltd.</span>
+                        </h5>
+                    </div>
+                    <div class="total client-infoo">
+                        <p style="color: #182f49;">Total Amount: ₹<%= totalAmount.toFixed(2) %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Image -->
+    <!-- <div class="footer-image">
+        <img src="https://crm.dreambytesolution.com/public/assets/footer.png" alt="" style="width: 100%; height: auto;"> 
+    </div> -->
+</body>
+
+</html>

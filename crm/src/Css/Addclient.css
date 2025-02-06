@@ -1,0 +1,25 @@
+
+
+.head{
+  display: flex;
+  justify-content: space-between;
+}
+.header1{
+  width: 96%;
+  margin: 2% 2%;
+  background: #E5E4E2;
+  padding: 20px 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+} 
+.checkbox{
+  display: none;
+}
+.del{
+  color: red;
+}
+.upd{
+  color: green;
+}
+.view{
+  color: rgb(10, 123, 252);
+}
