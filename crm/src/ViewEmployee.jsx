@@ -38,7 +38,7 @@ const ViewEmployee = () => {
     try {
       setDisplay(true);
 
-      const url = `https://crm.dreambytesolution.com/dream/getuniqueemp/${employeeId}`;
+      const url = `https://bill.dreambytesolution.com/dream/getuniqueemp/${employeeId}`;
       const headers = {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -61,7 +61,7 @@ const ViewEmployee = () => {
 
   const updateEmployee= async()=>{
     try {
-      const url = `https://crm.dreambytesolution.com/dream/updateemp/${unique._id}`;
+      const url = `https://bill.dreambytesolution.com/dream/updateemp/${unique._id}`;
       const headers = {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -109,7 +109,7 @@ const ViewEmployee = () => {
   const viewAllData = async (employeeId) => {
     try {
       setShowModal(true);
-      const url = `https://crm.dreambytesolution.com/dream/getuniqueemp/${employeeId}`;
+      const url = `https://bill.dreambytesolution.com/dream/getuniqueemp/${employeeId}`;
       const headers = {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -144,7 +144,7 @@ const ViewEmployee = () => {
   }
   const viewEmployee = async () => {
     try {
-      const url = "https://crm.dreambytesolution.com/dream/getemp";
+      const url = "https://bill.dreambytesolution.com/dream/getemp";
       const headers = {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -200,7 +200,7 @@ const removeClient= async(employeeId)=>{
   
   try{
   
-    const url = `https://crm.dreambytesolution.com/dream/delemp/${employeeId}`;
+    const url = `https://bill.dreambytesolution.com/dream/delemp/${employeeId}`;
     const headers = {
       "Content-Type": "application/json",
       Accept: "application/json",

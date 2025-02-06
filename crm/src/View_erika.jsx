@@ -10,7 +10,7 @@ const Viewerika = () => {
 
   async function fetchAllProducts() {
     try {
-      const response = await axios.get("https://crm.dreambytesolution.com/erika/productlist");
+      const response = await axios.get("https://bill.dreambytesolution.com/erika/productlist");
       setProducts(response.data.data[0]); 
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -43,7 +43,7 @@ const Viewerika = () => {
       gst : editProduct.gst,
       brand: editProduct.brand,
     }
-    const url = `https://crm.dreambytesolution.com/erika/updatepro/${id}`;
+    const url = `https://bill.dreambytesolution.com/erika/updatepro/${id}`;
     const headers={
       'Content-Type': 'application/json',
       Accept : 'application/json'
@@ -69,7 +69,7 @@ const Viewerika = () => {
 
   const handleDelete = async(id)=>{
     try{
-      const response = await axios.delete(`https://crm.dreambytesolution.com/erika/delpro/${id}`)
+      const response = await axios.delete(`https://bill.dreambytesolution.com/erika/delpro/${id}`)
       if(response.data){
         Swal({
           title: "Good job!",
@@ -107,7 +107,7 @@ const Viewerika = () => {
               <div className="col-md-3 mt-3 px-2 " key={prod.id}>
                 <div className='d-flex justify-content-center'>
                   <img
-                    src={`https://crm.dreambytesolution.com/${prod.image}`} 
+                    src={`https://bill.dreambytesolution.com/${prod.image}`} 
                     alt={prod.productname} 
                     style={{ width: "auto", height: "150px" }} 
                   />

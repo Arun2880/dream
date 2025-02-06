@@ -51,7 +51,7 @@ const AddEmployee = () => {
   const addemployee = async (event) => {
     event.preventDefault();
     try {
-      const url = "https://crm.dreambytesolution.com/dream/addemp";
+      const url = "https://bill.dreambytesolution.com/dream/addemp";
 
       const headers = {
         "Content-Type": "application/json",

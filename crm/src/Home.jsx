@@ -19,10 +19,10 @@ function Home() {
         const fetchData = async () => {
             try {
                 // Fetch dashboard data
-                const dashboardResponse = await axios.get('https://crm.dreambytesolution.com/dream/getclients'); // Your API URL for dashboard
+                const dashboardResponse = await axios.get('https://bill.dreambytesolution.com/dream/getclients'); // Your API URL for dashboard
 
                 // Fetch chart data
-                const chartResponse = await axios.get('https://crm.dreambytesolution.com/dream/getChart'); 
+                const chartResponse = await axios.get('https://bill.dreambytesolution.com/dream/getChart'); 
 
                
                 const processedBarChartData = chartResponse.data.barChartData.map(item => ({

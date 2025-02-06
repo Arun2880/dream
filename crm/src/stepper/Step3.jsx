@@ -50,7 +50,7 @@ const Step3 = () => {
     console.log('Form submitted with inputs:', dynamicInputs);
     // Example of sending data to server
     try {
-      const url = `https://crm.dreambytesolution.com/dream/services`;
+      const url = `https://bill.dreambytesolution.com/dream/services`;
       const headers = {
         "Content-Type": "application/json",
         "Accept": "application/json",
@@ -94,7 +94,7 @@ const Step3 = () => {
   const handleExistance = async (toy) => {
     console.log("Client No:", toy);
     try {
-      const url = `https://crm.dreambytesolution.com/dream/getuniclient/${toy}`;
+      const url = `https://bill.dreambytesolution.com/dream/getuniclient/${toy}`;
       const headers = {
         "Content-Type": "application/json",
         "Accept": "application/json",

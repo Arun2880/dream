@@ -17,7 +17,7 @@ const Step1 = () => {
     event.preventDefault(); // Prevent form submission
 
     try {
-      const url = `https://crm.dreambytesolution.com/dream/getuniclient/${exist.clientno}`;
+      const url = `https://bill.dreambytesolution.com/dream/getuniclient/${exist.clientno}`;
       const headers = {
         "Content-Type": "application/json",
         Accept: "application/json",

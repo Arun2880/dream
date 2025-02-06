@@ -25,7 +25,7 @@ const Step4 = () => {
     setText(true);
 
     try {
-      const url = `https://crm.dreambytesolution.com/dream/genratebill`;
+      const url = `https://bill.dreambytesolution.com/dream/genratebill`;
       const headers = {
         "Content-Type": "application/json",
         Accept: "application/json",

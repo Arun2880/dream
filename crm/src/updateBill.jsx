@@ -45,7 +45,7 @@ const UpdateBill = () => {
 
     try {
       const response = await axios.get(
-        `https://crm.dreambytesolution.com/dream/fetchBilling?page=${page}&limit=${pageSize}`
+        `https://bill.dreambytesolution.com/dream/fetchBilling?page=${page}&limit=${pageSize}`
       );
       setDocuments(response.data.data);
       setPagination({
@@ -149,7 +149,7 @@ const getPageNumbers = () => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `https://crm.dreambytesolution.com/dream/updateBilling/${selectedDocument._id}`,
+        `https://bill.dreambytesolution.com/dream/updateBilling/${selectedDocument._id}`,
         formData
       );
 
@@ -177,7 +177,7 @@ const getPageNumbers = () => {
     const path = pdfPaths[documentId];
     if (path) {
       const link = document.createElement("a");
-      link.href = `https://crm.dreambytesolution.com/${path}`;
+      link.href = `https://bill.dreambytesolution.com/${path}`;
       link.target = "_blank"; // Open in a new tab
       link.download = "updateInvoice.pdf"; // Set a custom name for the file
       link.click(); // Trigger the download

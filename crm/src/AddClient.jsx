@@ -98,7 +98,7 @@ const AddClient = () => {
   const addclient = async (event) => {
     event.preventDefault();
     try {
-      const url = "https://crm.dreambytesolution.com/dream/clients";
+      const url = "https://bill.dreambytesolution.com/dream/clients";
 
       const headers = {
         "Content-Type": "application/json",

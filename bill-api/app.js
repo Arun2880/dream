@@ -13,7 +13,7 @@ app.use(cookieParser());
 
 // CORS Configuration for Cookie Handling
 const corsOptions = {
-  origin: 'https://crm.dreambytesolution.com/',  // Replace with your frontend URL (localhost for development)
+  origin: 'https://bill.dreambytesolution.com/',  // Replace with your frontend URL (localhost for development)
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,  // Allow cookies to be sent with requests
 };

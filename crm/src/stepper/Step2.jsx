@@ -18,7 +18,7 @@ const Step2 = () => {
   const handleExistance = async (clientno) => {
     console.log("Client No:", clientno);
     try {
-        const url = `https://crm.dreambytesolution.com/dream/getuniclient/${clientno}`;
+        const url = `https://bill.dreambytesolution.com/dream/getuniclient/${clientno}`;
         const headers = {
             "Content-Type": "application/json",
             "Accept": "application/json",

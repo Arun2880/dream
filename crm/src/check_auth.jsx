@@ -10,7 +10,7 @@ const AuthProtectedRoute = ({ children }) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await axios.get("https://crm.dreambytesolution.com/dream/checkauth", {
+        const response = await axios.get("https://bill.dreambytesolution.com/dream/checkauth", {
           withCredentials: true,
           headers: {
             'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',

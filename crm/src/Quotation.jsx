@@ -26,7 +26,7 @@ const Quotation = () => {
     e.preventDefault();
     try{
 
-      const url = `https://crm.dreambytesolution.com/dream/addtask`
+      const url = `https://bill.dreambytesolution.com/dream/addtask`
       const header={
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -81,7 +81,7 @@ const Quotation = () => {
 
   const viewEmployee = async () => {
     try {
-      const url = "https://crm.dreambytesolution.com/dream/getemp";
+      const url = "https://bill.dreambytesolution.com/dream/getemp";
       const headers = {
         "Content-Type": "application/json",
         Accept: "application/json",

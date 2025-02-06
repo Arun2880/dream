@@ -30,7 +30,7 @@ const Erika = () => {
     e.preventDefault();
 
     try {
-      const url = "https://crm.dreambytesolution.com/erika/addproduct";
+      const url = "https://bill.dreambytesolution.com/erika/addproduct";
 
       const formDataToSend = new FormData();
 

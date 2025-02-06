@@ -14,7 +14,7 @@ function Header({OpenSidebar}) {
   const handleLogout=async(e)=>{
     e.preventDefault();
     try{
-      const response= await axios.post('https://crm.dreambytesolution.com/dream/logout');  
+      const response= await axios.post('https://bill.dreambytesolution.com/dream/logout');  
       if(response){
         navigate('/');
       }

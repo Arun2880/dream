@@ -21,7 +21,7 @@ const Revenue = () => {
   const handleChangeRevenue = async (e) => {
     e.preventDefault();
     try {
-      const url = `https://crm.dreambytesolution.com/dream/genraterevenu`;
+      const url = `https://bill.dreambytesolution.com/dream/genraterevenu`;
       const headers = {
         "Content-Type": "application/json",
         Accept: "application/json",

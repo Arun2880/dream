@@ -23,7 +23,7 @@ const Login = () => {
     setError('');
 
     try {
-      const response = await axios.post('https://crm.dreambytesolution.com/dream/login', {
+      const response = await axios.post('https://bill.dreambytesolution.com/dream/login', {
         email,
         password,
         withCredentials: true,
@@ -57,7 +57,7 @@ const Login = () => {
     }
 
     try {
-      const response = await axios.post('https://crm.dreambytesolution.com/dream/register', {
+      const response = await axios.post('https://bill.dreambytesolution.com/dream/register', {
         username,
         email,
         password,

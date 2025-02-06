@@ -16,7 +16,7 @@ const AssignTask = () => {
     try {
       setDisplay(true);
 
-      const url = `https://crm.dreambytesolution.com/dream/singletask/${employeeId}`;
+      const url = `https://bill.dreambytesolution.com/dream/singletask/${employeeId}`;
       const headers = {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -40,7 +40,7 @@ const AssignTask = () => {
 
   const viewEmployee = async () => {
     try {
-      const url = "https://crm.dreambytesolution.com/dream/gettasks";
+      const url = "https://bill.dreambytesolution.com/dream/gettasks";
       const headers = {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -67,7 +67,7 @@ const AssignTask = () => {
 
   const handleProgress = async (assignee) => {
     try {
-      const url = `https://crm.dreambytesolution.com/dream/updatetask/${assignee}`;
+      const url = `https://bill.dreambytesolution.com/dream/updatetask/${assignee}`;
       const headers = {
         "Content-Type": "application/json",
         Accept: "application/json",

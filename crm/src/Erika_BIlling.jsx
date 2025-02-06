@@ -53,7 +53,7 @@ const Erika_Billing = () => {
   async function fetchAllProducts() {
     try {
       const response = await axios.get(
-        "https://crm.dreambytesolution.com/erika/productlist"
+        "https://bill.dreambytesolution.com/erika/productlist"
       );
       setProducts(response.data.data[0]);
       
@@ -97,7 +97,7 @@ const Erika_Billing = () => {
   // Fetch client data when client number changes
   async function fetchClient(newQuery) {
     try {
-      const url = `https://crm.dreambytesolution.com/dream/getuniclient/${newQuery}`;
+      const url = `https://bill.dreambytesolution.com/dream/getuniclient/${newQuery}`;
       const headers = {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -200,7 +200,7 @@ const Erika_Billing = () => {
   
       // Send POST request to generate the PDF
       const response = await axios.post(
-       "https://crm.dreambytesolution.com/erika/createbill", 
+       "https://bill.dreambytesolution.com/erika/createbill", 
         billingData,
         {
           headers: {
@@ -255,7 +255,7 @@ const Erika_Billing = () => {
   
       // Send POST request to generate the PDF
       const response = await axios.post(
-       "https://crm.dreambytesolution.com/erika/createquotation", 
+       "https://bill.dreambytesolution.com/erika/createquotation", 
         billingData,
         {
           headers: {
@@ -295,7 +295,7 @@ const Erika_Billing = () => {
   const handleDownload = () => {
     if (pdfPath) {
       const link = document.createElement("a");
-      link.href = `https://crm.dreambytesolution.com/${pdfPath}`;
+      link.href = `https://bill.dreambytesolution.com/${pdfPath}`;
       link.target = "_blank"; // Use the PDF path stored in state
       link.download = "invoice.pdf"; // You can set a custom name for the file
       link.click(); // Trigger the download

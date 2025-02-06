@@ -19,7 +19,7 @@ const Step5 = () => {
   const handleDownload = async () => {
     try {
       // URL of the file to be downloaded
-      const fileUrl = `https://crm.dreambytesolution.com/${pdf}`;
+      const fileUrl = `https://bill.dreambytesolution.com/${pdf}`;
       
       // Fetch the file from the URL
       const response = await fetch(fileUrl);

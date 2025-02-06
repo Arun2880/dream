@@ -27,7 +27,7 @@ const Erika_update_billing = () => {
     try {
       setLoading(true);
       const limit = 10; // Set the number of records per page
-      const response = await axios.get(`https://crm.dreambytesolution.com/erika/fetchAllBills/?page=${page}&limit=${limit}`);
+      const response = await axios.get(`https://bill.dreambytesolution.com/erika/fetchAllBills/?page=${page}&limit=${limit}`);
       console.log("response", response);
       setBills(response.data.bills);
       setTotalBills(response.data.totalBills);
@@ -89,7 +89,7 @@ const Erika_update_billing = () => {
   
     try {
       const response = await axios.put(
-        `https://crm.dreambytesolution.com/erika/updatebill`,
+        `https://bill.dreambytesolution.com/erika/updatebill`,
         updatedBill
       );
   
@@ -122,7 +122,7 @@ const Erika_update_billing = () => {
   const handleDownload = () => {
     if (pdfPath) {
       const link = document.createElement("a");
-      link.href = `https://crm.dreambytesolution.com/${pdfPath}`;
+      link.href = `https://bill.dreambytesolution.com/${pdfPath}`;
       link.target = "_blank"; // Use the PDF path stored in state
       link.download = "updateInvoice.pdf"; // You can set a custom name for the file
       link.click(); // Trigger the download

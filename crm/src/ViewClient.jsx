@@ -31,7 +31,7 @@ const ViewClient = () => {
   const fetchClient = async (clientId, clientNo) => {
     console.log("adsfghjhgfds: ", clientNo);
     try {
-      const url = `https://crm.dreambytesolution.com/dream/singleclients/${clientNo}`;
+      const url = `https://bill.dreambytesolution.com/dream/singleclients/${clientNo}`;
       const headers = {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -74,7 +74,7 @@ const ViewClient = () => {
 
   const viewClient = async () => {
     try {
-      const url = "https://crm.dreambytesolution.com/dream/getclients";
+      const url = "https://bill.dreambytesolution.com/dream/getclients";
       const headers = {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -91,7 +91,7 @@ const ViewClient = () => {
 
   const handleSubmit = async () => {
     try {
-      const url = `https://crm.dreambytesolution.com/dream/updateclients/${editClient._id}`;
+      const url = `https://bill.dreambytesolution.com/dream/updateclients/${editClient._id}`;
       const headers = {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -160,7 +160,7 @@ const ViewClient = () => {
   };
   const removeClient = async (clientId) => {
     try {
-      const url = `https://crm.dreambytesolution.com/dream/clients/${clientId}`;
+      const url = `https://bill.dreambytesolution.com/dream/clients/${clientId}`;
       const headers = {
         "Content-Type": "application/json",
         Accept: "application/json",
